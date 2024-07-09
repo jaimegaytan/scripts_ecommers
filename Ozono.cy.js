@@ -17,19 +17,22 @@ describe('Prueba de pagina de Ozono', () => {
     
   }
   const rellenardirrecion = () => {
-    // Ingresar nombre
-    cy.wait(100)    
-    cy.get(':nth-child(1) > :nth-child(1) > .ng-tns-c249-2 > .group > .ng-untouched', ).should('be.visible').type('Gafe')
+    
+    cy.get('form.ng-tns-c250-2').should('be.visible')
+    // Ingresar nombre   
+    cy.wait(300)
+    cy.get(':nth-child(1) > :nth-child(1) > .ng-tns-c250-2 > .group > .ng-untouched').type('gafe')
     // Ingresar apellido
-    cy.get(':nth-child(2) > .ng-tns-c249-2 > .group > .ng-pristine').should('be.visible').type('Gafe')
-     // Ingresar codigo postal
-    cy.get('.ng-tns-c249-2.ng-dirty > :nth-child(2) > .form-group > .ng-tns-c249-2 > .group > .ng-untouched').should('be.visible').type("20269")
-    // Ingresar calle y numero
-    cy.get(':nth-child(5) > .ng-tns-c249-2 > .group > .ng-untouched').type("MK 4")
-    // Ingresar Telefono
-    cy.get(':nth-child(6) > .ng-tns-c249-2 > .group > .ng-untouched').type("4492556677")
-    // Click a continuar
+    cy.get(':nth-child(2) > .ng-tns-c250-2 > .group > .ng-pristine').type('alto mando')
+    // Ingresar C.P
+    cy.get('.ng-tns-c250-2.ng-dirty > :nth-child(2) > .form-group > .ng-tns-c250-2 > .group > .ng-pristine').type('20269')
+    // Ingresar Calle y numero
+    cy.get(':nth-child(5) > .ng-tns-c250-2 > .group > .ng-pristine').type('Teo 109')
+    // Ingresar telefono 
+    cy.get(':nth-child(6) > .ng-tns-c250-2 > .group > .ng-pristine').type('4491824455')
+    // Ingresar continuar
     cy.get('.slider-container').click()
+
     
   }
   const metodoEnvio  = () => {
@@ -38,15 +41,12 @@ describe('Prueba de pagina de Ozono', () => {
     // cy.get('.cx-checkout-title').should('be.visble').and('contain','MÉTODO DE ENVÍO')
     // Click a continuar
     cy.get('.slider-container',{ timeout: 10000 }).should('be.visible').click()
-   
-
-   
   }
   const usuarioRegistrado = () => {
     // ingresar correo
     cy.get(':nth-child(3) > app-custom-input > .group > .ng-untouched').type('jaimeqa99@gmail.com')
     // Ingresa contraseña
-    cy.get('[style="display: block;"] > .group > .ng-untouched').type('Lookkg361@123')
+    cy.get('[style="display: block;"] > .group > .ng-untouched').type('Lookkg361@')
     // Continuar
     cy.get('.slider-container').click()
     cy.wait(4000)
@@ -87,10 +87,6 @@ describe('Prueba de pagina de Ozono', () => {
     cy.get('[formcontrolname="expiryYear"]').type('2025{enter}')
      // Click pagar
     cy.get('.slider-container').should('be.visible').click()
-    
-    
-
-
 
   });
     
@@ -128,7 +124,7 @@ describe('Prueba de pagina de Ozono', () => {
       });
       
   });
- it.only('Pago en efectivo con MercadoPago', () => {
+ it('Pago en efectivo con MercadoPago', () => {
     selecionaCalzado()
     usuarioRegistrado()
     rellenardirrecion()
@@ -136,8 +132,10 @@ describe('Prueba de pagina de Ozono', () => {
     metodoEnvio()
     // Selecionar pago con mercado pago
     cy.get(':nth-child(3) > .method--img > img').click()
+    // Click al boton continuar
     cy.get('.slider-container').should('be.visible').click()
-      
+    // Click en continuar
+    cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()  
   });
  
 
