@@ -10,6 +10,7 @@ describe('Prueba de pagina de Ozono', () => {
     // Selecionar el tamano
     cy.get(':nth-child(4) > .size').should('be.visible').click()
     // Click agregar al carrito
+    cy.wait(400)
     cy.get('.slider-container').click()
     // Click a proceder pago
     cy.get('.cx-dialog-buttons > .btn-secondary').click()
@@ -17,7 +18,8 @@ describe('Prueba de pagina de Ozono', () => {
     
   }
   const rellenardirrecion = () => {
-    
+
+    cy.wait(10000)
     cy.get('form.ng-tns-c250-2').should('be.visible')
     // Ingresar nombre   
     cy.wait(300)
@@ -87,12 +89,14 @@ describe('Prueba de pagina de Ozono', () => {
     cy.get('[formcontrolname="expiryYear"]').type('2025{enter}')
      // Click pagar
     cy.get('.slider-container').should('be.visible').click()
+    cy.screenshot('captura-1') 
 
   });
     
   it('Pago pypal', () => {
     selecionaCalzado()
     usuarioRegistrado()
+    cy.wait(20000)
     rellenardirrecion()
     cy.wait(10000)
     metodoEnvio()
@@ -117,11 +121,8 @@ describe('Prueba de pagina de Ozono', () => {
     // Selecionar pago en efectivo
     cy.get('.methods > :nth-child(4)').should('be.visible').click()
     cy.get('.slider-container').click()
-    cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()
-    cy.get('.numberOrder').invoke('val').then((value) => {
-  // value contiene el valor del atributo 'value' del elemento .numberOrder
-       console.log(value); // Muestra el valor en la consola
-      });
+    //cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()
+    cy.screenshot('captura-2')
       
   });
  it('Pago en efectivo con MercadoPago', () => {
@@ -135,7 +136,8 @@ describe('Prueba de pagina de Ozono', () => {
     // Click al boton continuar
     cy.get('.slider-container').should('be.visible').click()
     // Click en continuar
-    cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()  
+    //cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()  
+    cy.screenshot('captura-3') 
   });
  
 
