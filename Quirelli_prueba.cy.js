@@ -104,11 +104,11 @@ describe('Prueba de pagina en quirelli', () => {
         cy.get('.btn').click()
         RellenarDirrecionQ()
         coneckta1()
-        
+        cy.screenshot('pago conecta') 
     
     });
 
-    it('Comprar como invitado', () => {
+    it('Comprar como invitado efectivo', () => {
 
         //Usar la funcion de selecionar zapato
         SelecionarZapato()
@@ -122,10 +122,10 @@ describe('Prueba de pagina en quirelli', () => {
         cy.get('.btn').click()
         RellenarDirrecionQ()
         Mercadopago()
-         
+        cy.screenshot('invitado efectivo')  
     
     });
-    it('Comprar com usuario Registrado', () => {
+    it('Comprar con usuario Registrado', () => {
         
         SelecionarZapato()
         cy.get('form.ng-untouched > :nth-child(1)').type('jaimeqa99@gmail.com')
@@ -135,6 +135,7 @@ describe('Prueba de pagina en quirelli', () => {
         cy.wait(3000)
         cy.get('.cx-checkout-btns > :nth-child(2)').click()
         Mercadopago()
+        cy.screenshot('efectivo registrado')
 
          
     
