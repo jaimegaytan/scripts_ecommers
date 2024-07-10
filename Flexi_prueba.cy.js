@@ -66,11 +66,9 @@ describe('Prueba de pagina en Flexi', () => {
     //Espera de 2000
     cy.wait(2000)
     //Click en comprar
-    //cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
-    //Optener el numero de pedido.
-    //cy.get('.order-title').invoke('text').then((text) => {
-      //console.log(text);
-    //});
+    cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
+    
+    
  
     
     
@@ -142,7 +140,7 @@ describe('Prueba de pagina en Flexi', () => {
   //Selecionar ver carrito
   cy.get('#submitPopUp').click()
   //Comprar ahora 
-  cy.get('.my-car-style > .col-md-3 > .btn').click()
+  cy.get('.my-car-style > .col-md-3 > .btn').click().screenshot()
   
 }
 const clickandcollect = () => {
@@ -160,25 +158,26 @@ const clickandcollect = () => {
   
 }
 
- it.only('Comprar como invitado Pagon con tarjeta Mercadopago', () => {
+ it('Comprar como invitado Pagon con tarjeta Mercadopago', () => {
     
     //Usar la funcion calzado
     selecionaCalzado()
     usuario_invitado()
     RellenarDirrecion()
     PagoConTarjetaMercadopago()
-    
+    cy.screenshot('captura-tarjetaMercapago') 
   
 
 
   });
-  it('Comprar como usuarioo Registrado', () => {
+  it('Comoprar como usuario registrado tarjeta mercadopago', () => {
     
     //Usar la funcion calzado
     selecionaCalzado()
     usuario_Registrado()
     RellenarDirrecion()
     PagoConTarjetaMercadopago()
+    cy.screenshot('captura-pagocontarjeta-usuario-registrado')
 
   });
   it('Comprar como usuario Registrado efectivo', () => {
@@ -188,18 +187,20 @@ const clickandcollect = () => {
     usuario_Registrado()
     RellenarDirrecion()
     MercadoPago()
+    cy.screenshot('captura-efectivo-usuario-registrado')
 
   });
-  it('Comprar como usuario Registrado  tarjeta', () => {
+  it('Comprar como usuario invitado en efectivo', () => {
     
     //Selecionar el calzado
     selecionaCalzado()
-    usuario_Registrado()
+    usuario_invitado()
     RellenarDirrecion()
-    PagoConTarjetaMercadopago()
+    MercadoPago()
+    cy.screenshot('Invitado con efectivo')
 
   });
-  it('Comprar como usuario Registrado  tarjeta', () => {
+  it('Comprar como usuario Registrado paypal', () => {
     
     //Selecionar el calzado
     selecionaCalzado()
@@ -214,7 +215,7 @@ const clickandcollect = () => {
     usuario_Registrado()
     clickandcollect()
     MercadoPago()
-    
+    cy.screenshot('Compra click&collect-registrado')
 
   });
   it('Comprar con click&collect Usuario Invitado', () => {
@@ -229,7 +230,7 @@ const clickandcollect = () => {
     usuario_invitado()
     clickandcollect()
     PagoConTarjetaMercadopago()
-        
+    cy.screenshot('Compra-click&collect-invitado')    
 
   });
   it('Comprar con click&collect Usuario Registrado MercaPago', () => {
@@ -239,22 +240,34 @@ const clickandcollect = () => {
     clickandcollect()
     cy.wait(5000)
     MercadoPago()
-    
+    cy.screenshot('Click&collect-MercadoPago')
         
 
   });
-  it.only('Comprar con click&collect Usuario Registrado Tarjeta', () => {
+  it('Comprar con click&collect Usuario Registrado Tarjeta', () => {
     
     EscogerOtroProducto()
     usuario_Registrado()
     clickandcollect()
     cy.wait(5000)
     PagoConTarjetaMercadopago()
-    
+    cy.screenshot('RegistadoTarjeta')
         
 
   });
-  
+  it('Comprar con venta asistida', () => {
+    
+    selecionaCalzado()
+    usuario_Registrado()
+    RellenarDirrecion()
+    cy.get('#mp_link').click()
+    cy.get('#customerEmail').type('jaimeqa99@gmail.com')
+    cy.get(':nth-child(4) > .payment-op > .btn').click()
+    cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
+    cy.screenshot('venta-asisitida')
+        
+
+  });
  
   
 });
