@@ -1,6 +1,6 @@
 describe('Prueba de pagina en quirelli', () => {
     beforeEach(() => {
-      cy.visit('https://quirelli.c2yi-servicios1-s1-public.model-t.cc.commerce.ondemand.com/');
+      cy.visit('https://www.quirelli.com/');
       cy.document().should('exist').its('readyState').should('equal', 'complete');
       Cypress.on('uncaught:exception', (err, runnable) => {
         // Devolver false para evitar que Cypress falle la prueba
@@ -154,5 +154,20 @@ describe('Prueba de pagina en quirelli', () => {
      
 
     });
+    it.only('Venta asistida' , () => {
+        SelecionarZapato()
+        cy.get('.btn-guest').click()
+      //Ingresar correo electronico 
+        cy.get('form.ng-untouched > :nth-child(1) > label').type('jaimeqa99@gmail.com')
+     //Ingresar correo electronico
+        cy.get(':nth-child(2) > label').type('jaimeqa99@gmail.com') 
+     //Click al boton continuar.
+     cy.get('.btn').click()
+     RellenarDirrecionQ()
+
+
+        
+   
+       });
     
   });
