@@ -1,8 +1,8 @@
 describe('Prueba de pagina en Flexi', () => {
   beforeEach(() => {
-    cy.visit('https://accstorefront.c2yi-servicios1-s1-public.model-t.cc.commerce.ondemand.com/es/');
+    cy.visit('https://accstorefront.c2yi-servicios1-p1-public.model-t.cc.commerce.ondemand.com/es/');
     cy.document().should('exist').its('readyState').should('equal', 'complete');
-    cy.viewport(1920, 1080)
+    cy.viewport(1900, 1000)
     Cypress.on('uncaught:exception', (err, runnable) => {
       // Devolver false para evitar que Cypress falle la prueba
       return false;
@@ -13,7 +13,7 @@ describe('Prueba de pagina en Flexi', () => {
     //Esperar a que aparesca a la ventana emergente
     cy.wait(4000)
     //Cerrar la Ventana Emergente
-    cy.get('#wps-overlay-close-button').click()
+    //cy.get('#wps-overlay-close-button').click()
     //Aceprar cookies
     cy.get('[data-code="MARKETING_NEWSLETTER"] > .row > :nth-child(4) > .consent-accept').click()
     //Selecionar dama
@@ -66,11 +66,7 @@ describe('Prueba de pagina en Flexi', () => {
     //Espera de 2000
     cy.wait(2000)
     //Click en comprar
-    cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
-    
-    
- 
-    
+    //cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
     
   }
   const PagoConTarjetaMercadopago = () => {
@@ -93,15 +89,28 @@ describe('Prueba de pagina en Flexi', () => {
     //Click siguente
     cy.get('#btn_payment').click()
     //Click compra ahora 
-    //cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
-    
-    
+    cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
+  
   }
+
   const PagoPayPal = () => {
 
     cy.get('#paypal').click()
     cy.wait(2000)
     cy.get(':nth-child(2) > .payment-op').should('be.visible').click()
+    
+    
+  }
+  const conecktaFlexi = () => {
+     
+    //Selecionar metodo en efectivo
+    cy.get('#cash').click()
+    //Selecionar metodo de coneckta oxxo
+    cy.get('#coneckta').click()
+    //Click en continuar
+    cy.get('.payment-op > .btn').click()
+    //Click en comprar
+    cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
     
     
   }
@@ -121,7 +130,7 @@ describe('Prueba de pagina en Flexi', () => {
    //Ingresar correo
    cy.get('#loginForm > :nth-child(1)').type('jaimeqa99@gmail.com')
    //Ingresar la contraseña
-   cy.get('#loginForm > :nth-child(2)').type('Lookkg361')
+   cy.get('#loginForm > :nth-child(2)').type('lookkg361')
    //Click a entrar
    cy.get('#loginForm > .btn-style-green').click()
    
@@ -156,6 +165,30 @@ const clickandcollect = () => {
     cy.get('#addressSubmit').click()
      //Click en metodo de pago mercado pago en efectivo
   
+}
+const ZapatoProductivo = () => {
+
+    cy.get('.consent-reject').click()
+    cy.get(':nth-child(2) > .nav__link > a').click()
+    cy.get('#addToCartForm7500421747438 > .btn').click()
+    cy.get(':nth-child(3) > #btn').click()
+    cy.get('#submitPopUp').click()
+    cy.get('.my-car-style > .col-md-3 > .btn').click()
+  
+
+}
+
+const ZapatoProductivo2 = () => {
+
+  cy.screenshot('venta-asisitida-productivo-efectivo-mercapago')
+  cy.get(':nth-child(3) > .nav__link > a').click()
+  cy.get('#addToCartForm7500421426371 > .btn').click()
+  cy.get(':nth-child(5) > #btn').click()
+   cy.get('#submitPopUp').click()
+   cy.get('.my-car-style > .col-md-3 > .btn').click()
+    
+
+
 }
 
  it('Comprar como invitado Pagon con tarjeta Mercadopago', () => {
@@ -268,6 +301,88 @@ const clickandcollect = () => {
         
 
   });
- 
+  it.only('Comprar efectivo productivo usuario invitado', () => {
+
+    ZapatoProductivo()
+    usuario_invitado()
+    RellenarDirrecion()
+    MercadoPago()
+    cy.screenshot('Compra-efectivo-productivo')
+
+  });
+  it.only('Comprar efectivo productivo usuario registrado', () => {
+
+    ZapatoProductivo()
+    usuario_Registrado()
+    RellenarDirrecion()
+    MercadoPago()
+    cy.screenshot('Compra-efectivo-productivo-registrado ')
+
+  });
+  it.only('Comprar con efectivoConeckta usuario invitado P', () => {
+
+    ZapatoProductivo()
+    usuario_invitado()
+    RellenarDirrecion()
+    conecktaFlexi()
+    cy.screenshot('Compra efectivo coneckta productivo ')
+
+
+  });
+  it.only('Comprar con efectivoConeckta registrado P', () => {
+
+    ZapatoProductivo()
+    usuario_Registrado()
+    RellenarDirrecion()
+    conecktaFlexi()
+    cy.screenshot('Compra efectivo coneckta productivo ')
+
+
+  });
+  it.only('Comprar ventaasistida P', () => {
+
+    ZapatoProductivo()
+    usuario_Registrado()
+    RellenarDirrecion()
+    cy.get('#mp_link').click()
+    cy.get('#customerEmail').type('jaimeqa99@gmail.com')
+    cy.get(':nth-child(4) > .payment-op > .btn').click()
+    cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
+    cy.screenshot('venta-asisitida-productivo')
+  
+
+
+  });
+  it.only('Click&collect usuario invitado P', () => {
+
+    ZapatoProductivo()
+    usuario_invitado()
+    clickandcollect()
+    MercadoPago()
+    cy.screenshot('Click&collect-productivo-mercapago-invitado')
+    ZapatoProductivo2()
+    usuario_invitado()
+    clickandcollect()
+    conecktaFlexi()
+    cy.screenshot('Click&collect-productivo-invitado')  
+    
+
+  });
+  it.only('Click&collect usuario Registrado P', () => {
+
+    ZapatoProductivo()
+    usuario_Registrado()
+    clickandcollect()
+    MercadoPago()
+    cy.screenshot('Click&collect-productivo-mercapago-registrado')
+    ZapatoProductivo2()
+    usuario_Registrado()
+    clickandcollect()
+    conecktaFlexi()
+    cy.screenshot('Click&collect-productivo-registrado')  
+    
+
+  });
+
   
 });
