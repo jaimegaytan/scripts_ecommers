@@ -10,7 +10,7 @@ describe('Prueba de pagina de Ozono', () => {
     // Selecionar el tamano
     cy.get(':nth-child(4) > .size').should('be.visible').click()
     // Click agregar al carrito
-    cy.wait(400)
+    cy.wait(1000)
     cy.get('.slider-container').click()
     // Click a proceder pago
     cy.get('.cx-dialog-buttons > .btn-secondary').click()
@@ -19,7 +19,7 @@ describe('Prueba de pagina de Ozono', () => {
   }
   const rellenardirrecion = () => {
 
-    cy.wait(10000)
+    cy.wait(20000)
     //cy.get('form.ng-tns-c250-2').should('be.visible')
     // Ingresar nombre   
     cy.wait(3000)
@@ -39,7 +39,7 @@ describe('Prueba de pagina de Ozono', () => {
   }
   const rellenardirrecionP = () => {
 
-    cy.wait(300)
+    cy.wait(2000)
     //cy.get('form.ng-tns-c250-2').should('be.visible')
     // Ingresar nombre   
     cy.get(':nth-child(1) > :nth-child(1) > .ng-tns-c249-2 > .group > .ng-untouched').type('gafe')
@@ -172,24 +172,7 @@ describe('Prueba de pagina de Ozono', () => {
 
     selecionaCalzado()
     usuarioRegistrado()
-    rellenardirrecionP()
-    cy.wait(10000)
-    //click en Continuar
-    cy.get('.slider-container').click()
-    //click en selecionar metodo de pago
-    cy.get('.methods > :nth-child(3)').click()
-    //click en Continuar
-    cy.get('.slider-container').click()
-    //Click en comprar
-    cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()
-    cy.screenshot('Mercapago-Efectivo-Registado')
-
-   });
-  it.only('Venta efectivo Coneckta P usuario registrado' , () => {
-
-    selecionaCalzado()
-    usuarioRegistrado()
-    rellenardirrecionP()
+    rellenardirrecion()
     cy.wait(10000)
     //click en Continuar
     cy.get('.slider-container').click()
@@ -199,6 +182,25 @@ describe('Prueba de pagina de Ozono', () => {
     cy.get('.slider-container').click()
     //Click en comprar
     cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()
+    cy.wait(600)
+    cy.screenshot('Mercapago-Efectivo-Registado')
+
+   });
+  it.only('Venta efectivo Coneckta P usuario registrado' , () => {
+
+    selecionaCalzado()
+    usuarioRegistrado()
+    rellenardirrecion()
+    cy.wait(10000)
+    //click en Continuar
+    cy.get('.slider-container').click()
+    //click en selecionar metodo de pago
+    cy.get('.methods > :nth-child(5)').click()
+    //click en Continuar
+    cy.get('.slider-container').click()
+    //Click en comprar
+    cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()
+    cy.wait(600)
     cy.screenshot('coneckta en efectivo-usuario-registrado')
 
    });
@@ -206,17 +208,18 @@ describe('Prueba de pagina de Ozono', () => {
 
     selecionaCalzado()
     usuario_invitado()
-    rellenardirrecionP()
+    rellenardirrecion()
     cy.wait(10000)
     //click en Continuar
     cy.get('.slider-container').click()
     //click en selecionar metodo de pago
     cy.wait(300)
-    cy.get('.methods > :nth-child(3)').click()
+    cy.get('.methods > :nth-child(5)').click()
     //click en Continuar
     cy.get('.slider-container').click()
     //Click en comprar
     cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()
+    cy.wait(600)
     cy.screenshot('coneckta-efectivo-Invitado-Productivo')
 
    });
@@ -224,7 +227,7 @@ describe('Prueba de pagina de Ozono', () => {
 
     selecionaCalzado()
     usuario_invitado()
-    rellenardirrecionP()
+    rellenardirrecion()
     cy.wait(10000)
     //click en Continuar
     cy.get('.slider-container').click()
@@ -234,6 +237,7 @@ describe('Prueba de pagina de Ozono', () => {
     cy.get('.slider-container').click()
     //Click en comprar
     cy.get('.submit-button-desk > app-custom-checkout-place-order > .cx-place-order-form > .row > .col-12 > .btn > .ng-star-inserted > .slider-container').click()
+    cy.wait(600)
     cy.screenshot('Mercadopago-efectivo-Invitado-Productivo')
 
    });
@@ -241,7 +245,7 @@ describe('Prueba de pagina de Ozono', () => {
 
     selecionaCalzado()
     usuarioRegistrado()
-    rellenardirrecionP()
+    rellenardirrecion()
     cy.wait(10000)
     //click en Continuar
     cy.get('.slider-container').click()
