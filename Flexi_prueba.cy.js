@@ -66,7 +66,7 @@ describe('Prueba de pagina en Flexi', () => {
     //Espera de 2000
     cy.wait(2000)
     //Click en comprar
-    //cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
+    cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
     
   }
   const PagoConTarjetaMercadopago = () => {
@@ -353,7 +353,7 @@ const ZapatoProductivo2 = () => {
 
 
   });
-  it.only('Click&collect usuario invitado P', () => {
+  it('Click&collect usuario invitado P', () => {
 
     ZapatoProductivo()
     usuario_invitado()
@@ -368,7 +368,7 @@ const ZapatoProductivo2 = () => {
     
 
   });
-  it.only('Click&collect usuario Registrado P', () => {
+  it('Click&collect usuario Registrado P', () => {
 
     ZapatoProductivo()
     usuario_Registrado()
