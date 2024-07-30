@@ -1,6 +1,6 @@
 describe('Prueba de pagina en Flexi', () => {
   beforeEach(() => {
-    cy.visit('https://accstorefront.c2yi-servicios1-p1-public.model-t.cc.commerce.ondemand.com/es/');
+    cy.visit('https://accstorefront.c2yi-servicios1-s1-public.model-t.cc.commerce.ondemand.com/es/');
     cy.document().should('exist').its('readyState').should('equal', 'complete');
     cy.viewport(1900, 1000)
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -15,15 +15,15 @@ describe('Prueba de pagina en Flexi', () => {
     //Cerrar la Ventana Emergente
     //cy.get('#wps-overlay-close-button').click()
     //Aceprar cookies
-    cy.get('[data-code="MARKETING_NEWSLETTER"] > .row > :nth-child(4) > .consent-accept').click()
+    //cy.get('[data-code="MARKETING_NEWSLETTER"] > .row > :nth-child(4) > .consent-accept').click()
     //Selecionar dama
     cy.get(':nth-child(2) > .nav__link > a').click()
     //Selecionar Zapato
-    cy.get('[src="/medias/sys_master/images/h70/h86/9526169468958/103404-oro-rosa-derecha/103404-oro-rosa-derecha.jpg"]').click()
+    cy.get('#addToCartForm7500421451755 > .btn').click()
     //Selecionar el numero de zapato
-    cy.get('[data-url="/es/c/Sneaker-Casual-Sport-Flexi-para-Mujer---Estilo-103404/p/7500421451854"]').click()
+    cy.get(':nth-child(7) > #btn').click()
     //Presionar comprar a ahora
-    cy.get('#shopButton').click()
+    cy.get('#submitPopUp').click()
     //Presionar comprar a ahora nuevamente pero en la siguente imagen
     cy.get('.my-car-style > .col-md-3 > .btn').click()
     
@@ -156,6 +156,11 @@ const clickandcollect = () => {
 
     //Click en el boton de click&collect
     cy.get('#clickAndCollect').click()
+    cy.wait(300)
+    //Ingresar nombre
+    cy.get('#addressPickupFullName').type('Jaime A')
+    //Ingresar telefono
+    cy.get('#addressPickupPhone').type('4491234422')
      //Elegir CDMX
     cy.get('#clickReadyAddresState').select('MX-CMX')
      //Selecionar coyoacan centro
@@ -191,6 +196,7 @@ const ZapatoProductivo2 = () => {
 
 }
 
+
  it('Comprar como invitado Pagon con tarjeta Mercadopago', () => {
     
     //Usar la funcion calzado
@@ -203,6 +209,7 @@ const ZapatoProductivo2 = () => {
 
 
   });
+  
   it('Comoprar como usuario registrado tarjeta mercadopago', () => {
     
     //Usar la funcion calzado
@@ -301,45 +308,49 @@ const ZapatoProductivo2 = () => {
         
 
   });
-  it.only('Comprar efectivo productivo usuario invitado', () => {
+  it('Comprar efectivo productivo usuario invitado', () => {
 
     ZapatoProductivo()
     usuario_invitado()
     RellenarDirrecion()
     MercadoPago()
+    cy.wait(3000)
     cy.screenshot('Compra-efectivo-productivo')
 
   });
-  it.only('Comprar efectivo productivo usuario registrado', () => {
+  it('Comprar efectivo productivo usuario registrado', () => {
 
     ZapatoProductivo()
     usuario_Registrado()
     RellenarDirrecion()
     MercadoPago()
+    cy.wait(3000)
     cy.screenshot('Compra-efectivo-productivo-registrado ')
 
   });
-  it.only('Comprar con efectivoConeckta usuario invitado P', () => {
+  it('Comprar con efectivoConeckta usuario invitado P', () => {
 
     ZapatoProductivo()
     usuario_invitado()
     RellenarDirrecion()
     conecktaFlexi()
+    cy.wait(3000)
     cy.screenshot('Compra efectivo coneckta productivo ')
 
 
   });
-  it.only('Comprar con efectivoConeckta registrado P', () => {
+  it('Comprar con efectivoConeckta registrado P', () => {
 
     ZapatoProductivo()
     usuario_Registrado()
     RellenarDirrecion()
     conecktaFlexi()
+    cy.wait(3000)
     cy.screenshot('Compra efectivo coneckta productivo ')
 
 
   });
-  it.only('Comprar ventaasistida P', () => {
+  it('Comprar ventaasistida P', () => {
 
     ZapatoProductivo()
     usuario_Registrado()
@@ -348,6 +359,7 @@ const ZapatoProductivo2 = () => {
     cy.get('#customerEmail').type('jaimeqa99@gmail.com')
     cy.get(':nth-child(4) > .payment-op > .btn').click()
     cy.get('.place-order-form > #placeOrderForm1 > #placeOrder').click()
+    cy.wait(3000)
     cy.screenshot('venta-asisitida-productivo')
   
 
@@ -364,6 +376,7 @@ const ZapatoProductivo2 = () => {
     usuario_invitado()
     clickandcollect()
     conecktaFlexi()
+    cy.wait(3000)
     cy.screenshot('Click&collect-productivo-invitado')  
     
 
@@ -379,6 +392,7 @@ const ZapatoProductivo2 = () => {
     usuario_Registrado()
     clickandcollect()
     conecktaFlexi()
+    cy.wait(3000)
     cy.screenshot('Click&collect-productivo-registrado')  
     
 
