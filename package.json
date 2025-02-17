@@ -1,0 +1,34 @@
+{
+  "name": "proyectoflexi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "variable:entorno": "cypress open --env VARIABLE_DE_ENTORNO=user",
+    "test1": "cypress open", 
+    "FlexiI" : "start npx cypress run --spec  cypress/e2e/scriptcypress/Flexitest/FlexiPOM-Invitado.cy.js",
+    "OzonoI": "start npx cypress run --spec cypress/e2e/scriptcypress/Flexitest/OzonoPOM-Invitado.cy.js",
+    "OzonoR": "start npx cypress run --spec cypress/e2e/scriptcypress/Flexitest/OzonoPOM.cy.js",
+    "Quirelli": "start npx cypress run --spec cypress/e2e/scriptcypress/Flexitest/QuirelliPOM.cy.js",
+    "AP1": "start npx cypress run --spec cypress/e2e/scriptcypress/Flexitest/pruebaAPI.cy.js ",
+    "test1:run": "npx cypress run --record --parallel --key 541f7930-9f35-4e50-99c9-c755ae4da160 --spec cypress/integration/**/*.spec.js"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "concurrently": "^9.1.2",
+    "cypress": "^13.15.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.11.0",
+    "typescript-eslint": "^8.10.0"
+  },
+  "dependencies": {
+    "cypress-cloud": "^1.11.0",
+    "cypress-parallel": "^0.14.0"
+  }
+}
