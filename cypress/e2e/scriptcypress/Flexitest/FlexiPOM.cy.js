@@ -33,7 +33,7 @@ describe('Prueba POM', () => {
        
         
     });
-    it('pago con efectivo coneckta', () => { 
+    it.only('pago con efectivo coneckta', () => { 
         MercadoPagoPageInstance.selecionarConeckta();
         PaidPageInstance.paidproduct(); 
         cy.get('.order-title')
