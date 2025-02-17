@@ -29,7 +29,7 @@ describe('Prueba de integración con la API', () => {
                   'Content-Type': 'application/json'   // Establecer el tipo de contenido como JSON
               },
               body: {
-                "id": 183555362,
+                "id": 183555370,
                 "accountName": "Flexi tienda oficial",
                 "marketPlaceId": "702-6204842-8347412",
                 "marketPlaceNumber": "702-6204842-8347412",
@@ -94,8 +94,8 @@ describe('Prueba de integración con la API', () => {
                         "sku": {
                             "id": 87964462,
                             "title": "Mocasines Y Oxfords Flexi para Mujer Estilo 119509 Negro",
-                            "partnerId": "7500421244746",
-                            "ean": "7500421244746"
+                            "partnerId": "7500421197431",
+                            "ean": "7500421197431"
                         },
                         "amount": 1,
                         "unit": 599.4,

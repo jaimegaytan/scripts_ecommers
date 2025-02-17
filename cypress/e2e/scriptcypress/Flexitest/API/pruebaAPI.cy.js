@@ -38,7 +38,7 @@ describe('Prueba de integración con la API', () => {
                               }
                           ],
                           "InvoiceIntegration": {
-                              "IntegrationId": 152138851,
+                              "IntegrationId": 152138852,
                               "App": 232,
                               "CreatedAt": "2024-12-10T21:12:66",
                               "DecreaseStock": true
@@ -99,7 +99,7 @@ describe('Prueba de integración con la API', () => {
                           "HasAnyShipments": true,
                           "HasAnyPayments": true,
                           "Date": "2024-12-10T21:12:17",
-                          "Id": 152138851,
+                          "Id": 152138852,
                           "ProductecaAccount": "232662",
                           "ChannelName": "Mercadolibre",
                           "Lines": [
@@ -108,7 +108,7 @@ describe('Prueba de integración con la API', () => {
                                   "Quantity": 1,
                                   "Description": "Tenis Flexi para Mujer Estilo 125601 Coral",
                                   "Code": "1390034124",
-                                  "Sku": "7500421244821",
+                                  "Sku": "7500421197431",
                                   "Mode": "Normal"
                               }
                           ],
@@ -132,7 +132,7 @@ describe('Prueba de integración con la API', () => {
                                       "Courier": "MercadoEnvios",
                                       "Cost": 100,
                                       "Mode": "Estándar a domicilio",
-                                      "LabelUrl": "https://apps.producteca.com/couriers/couriers/salesOrders/152138851/labels?access_token=95f2900771c7bdc71a9f58505ca141664bfdb537&type=zpl2"
+                                      "LabelUrl": "https://apps.producteca.com/couriers/couriers/salesOrders/15213885s/labels?access_token=95f2900771c7bdc71a9f58505ca141664bfdb537&type=zpl2"
                                   }
                               }
                           ],
