@@ -15,8 +15,9 @@ jobs:
       matrix:
         # Usa múltiples instancias para distribuir las pruebas en paralelo
         spec: 
-          - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI.cy.js"
-          - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI.cy.js"
+          - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI.cy.js1"
+          - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI.cy.js1"
+          - "cypress/e2e/scriptcypress/Flexitest/FlexiPOM.cy.js1"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
