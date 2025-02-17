@@ -1,4 +1,4 @@
-name: Run Cypress tests
+name: Cypress Tests
 
 on:
   push:
@@ -9,26 +9,29 @@ on:
       - main
 
 jobs:
-  test:
+  cypress-tests:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        # Usa múltiples instancias para distribuir las pruebas en paralelo
+        spec: 
+          - "cypress/integration/test1.spec.js"
+          - "cypress/integration/test2.spec.js"
+          - "cypress/integration/test3.spec.js"
     steps:
-      # 1. Checkout del código
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      # 2. Configurar Node.js
+        uses: actions/checkout@v3
+      
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
-
-      # 3. Instalar dependencias
+          node-version: '16'
+      
       - name: Install dependencies
-        run: npm install
-
-      # 4. Ejecutar pruebas de Cypress
-      - name: Run Cypress tests
-        run: npx cypress run
+        run: npm ci
+      
+      - name: Run Cypress Tests
+        run: |
+          npx cypress run --spec ${{ matrix.spec }} --record --parallel --key ${{ secrets.CYPRESS_API_KEY }}
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  # Usar variables de entorno para el registro de Cypress si es necesario
+          CYPRESS_API_KEY: ${{ secrets.CYPRESS_API_KEY }}
