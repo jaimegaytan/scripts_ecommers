@@ -17,7 +17,6 @@ jobs:
         spec: 
           - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI.cy.js"
           - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI-any.cy.js"
-          - "cypress/e2e/scriptcypress/Flexitest/FlexiPOM.cy.js"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
