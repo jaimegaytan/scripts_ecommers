@@ -15,9 +15,8 @@ jobs:
       matrix:
         # Usa múltiples instancias para distribuir las pruebas en paralelo
         spec: 
-          - "cypress/integration/test1.spec.js"
-          - "cypress/integration/test2.spec.js"
-          - "cypress/integration/test3.spec.js"
+          - "cypress/integration/pruebaAPI.spec.js"
+          - "cypress/integration/pruebaAPI-any.spec.js"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
