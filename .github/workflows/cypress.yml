@@ -17,6 +17,11 @@ jobs:
           # Aquí estamos creando grupos de pruebas diferentes
           - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI-any.cy.js"
           - "cypress/e2e/scriptcypress/Flexitest/API/pruebaAPI.cy.js"
+        browser: 
+          # Aquí definimos los navegadores para ejecutar las pruebas
+          - chrome
+          - firefox
+          - edge
         
     steps:
       - name: Checkout code
